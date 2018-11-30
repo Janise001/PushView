@@ -39,6 +39,7 @@ class MakeSingleAudioController: UIViewController {
         self.view.addSubview(self.actionView!)
         self.actionView!.isHidden = true
         self.actionView?.cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        self.actionView?.sureButton.addTarget(self, action: #selector(sureAndSave), for: .touchUpInside)
     }
     /// 初始化会话
     func setSession() {
@@ -116,11 +117,9 @@ class MakeSingleAudioController: UIViewController {
     /// 操作视图中的确认保存按钮事件
     @objc func sureAndSave() {
         guard let filePathURL = self.filePath else { return }
-        #if Beta
         let playSingleAudioVC = PlaySingleAudioController()
         playSingleAudioVC.config(filePathURL)
         self.navigationController?.pushViewController(playSingleAudioVC, animated: true)
-        #endif
     }
     /// 录制时长展示设置
     func resetTimer() {

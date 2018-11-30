@@ -28,6 +28,8 @@
 		106A8FB121AEA16300E38D41 /* PlaySingleAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A8FB021AEA16300E38D41 /* PlaySingleAudioController.swift */; };
 		106A919F213FB0B9007B3DB1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106A919E213FB0B9007B3DB1 /* Alamofire.framework */; };
 		1071965421995FF200B2C742 /* MakeMultiAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071965321995FF200B2C742 /* MakeMultiAudioController.swift */; };
+		1072091B21B11B330033553E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072091A21B11B330033553E /* ProgressView.swift */; };
+		1072091D21B126DA0033553E /* ProgressLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072091C21B126DA0033553E /* ProgressLayer.swift */; };
 		1072A3D621951D3B0036EEEC /* VideoActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072A3D521951D3B0036EEEC /* VideoActionView.swift */; };
 		1074C5D42193E488003B92BC /* MakeVedioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074C5D32193E488003B92BC /* MakeVedioController.swift */; };
 		1074C5D921943C87003B92BC /* VideoToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074C5D821943C87003B92BC /* VideoToolsView.swift */; };
@@ -88,6 +90,8 @@
 		106A8FB021AEA16300E38D41 /* PlaySingleAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySingleAudioController.swift; sourceTree = "<group>"; };
 		106A919E213FB0B9007B3DB1 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1071965321995FF200B2C742 /* MakeMultiAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMultiAudioController.swift; sourceTree = "<group>"; };
+		1072091A21B11B330033553E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		1072091C21B126DA0033553E /* ProgressLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLayer.swift; sourceTree = "<group>"; };
 		1072A3D521951D3B0036EEEC /* VideoActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoActionView.swift; sourceTree = "<group>"; };
 		1074C5D32193E488003B92BC /* MakeVedioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVedioController.swift; sourceTree = "<group>"; };
 		1074C5D821943C87003B92BC /* VideoToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoToolsView.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				1072A3D521951D3B0036EEEC /* VideoActionView.swift */,
 				1074C5D821943C87003B92BC /* VideoToolsView.swift */,
 				10BA31FC21A28C4600BC372E /* AudioActionView.swift */,
+				1072091A21B11B330033553E /* ProgressView.swift */,
+				1072091C21B126DA0033553E /* ProgressLayer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1072091D21B126DA0033553E /* ProgressLayer.swift in Sources */,
 				10462F6621363559009D3C93 /* ProductViewController.swift in Sources */,
 				10462F642136341D009D3C93 /* MineViewController.swift in Sources */,
 				10C078782135562F00355A6B /* ViewController.swift in Sources */,
@@ -590,6 +597,7 @@
 				106A8FB121AEA16300E38D41 /* PlaySingleAudioController.swift in Sources */,
 				104CD2C3219574A900F43B84 /* ToolsController.swift in Sources */,
 				1034D6B1219EBA4D00F1E531 /* ButtonView.swift in Sources */,
+				1072091B21B11B330033553E /* ProgressView.swift in Sources */,
 				10BA31FD21A28C4600BC372E /* AudioActionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

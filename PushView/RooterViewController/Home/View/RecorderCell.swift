@@ -25,7 +25,7 @@ class RecorderCell: UITableViewCell {
         self.configLayout()
     }
     //播放标志
-    lazy var playButton: ButtonView = ButtonView(backgroundImage: UIImage(named: "audio_play_icon"), selectedBackgroundImage: UIImage(named: "audio_stop_icon"), fontSize: 0)
+    lazy var playButton: ButtonView = ButtonView(backgroundColor: Color.clear, backgroundImage: UIImage(named: "audio_play_icon"), selectedBackgroundImage: UIImage(named: "audio_stop_icon"), fontSize: 0)
     var fileNameLabel: LabelView = LabelView(text: "录音文件名")
     func configLayout() {
         self.addSubview(playButton)

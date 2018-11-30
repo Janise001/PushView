@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "bofang.png",
+      "filename" : "zanting.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "bofang-2.png",
+      "filename" : "zanting-3.png",
       "scale" : "2x"
     },
     {

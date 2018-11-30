@@ -17,7 +17,9 @@ class RecorderFileListTableView: UITableView,UITableViewDelegate,UITableViewData
         }
     }
     var player:AVAudioPlayer?
-//    var playButton:ButtonView = ButtonView()
+    var playButtonView:ButtonView = ButtonView()
+    var indexSelected: Int?
+    
 
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -41,7 +43,7 @@ class RecorderFileListTableView: UITableView,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "recorderCell", for: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         let playButton:ButtonView = cell.viewWithTag(100) as! ButtonView
-        playButton.isHidden = self.modelData[indexPath.row].playStatus == .stop
+//        playButton.isHidden = self.modelData[indexPath.row].playStatus == .stop
         playButton.setTitle(String(indexPath.row), for: .normal)
         playButton.addTarget(self, action: #selector(playAudio(_:)), for: .touchUpInside)
         let fileName:LabelView = cell.viewWithTag(200) as! LabelView
@@ -51,46 +53,47 @@ class RecorderFileListTableView: UITableView,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return  50
     }
-    @objc func playAudio(_ sender: UIButton) {
-        guard let index = sender.titleLabel?.text else { return }
+    @objc func playAudio(_ sender: ButtonView) {
+        guard let indexStr = sender.titleLabel?.text else {
+            return
+        }
+        let index = Int(indexStr) ?? 0
+        self.playButtonView = sender
+        sender.isSelected = !sender.isSelected
+        self.playButtonView.isSelected = sender.isSelected
         do {
-            let path = self.modelData[Int(index)!].filePath ?? ""
+            self.indexSelected = index
+            let path = self.modelData[index].filePath ?? ""
             let url = URL(fileURLWithPath: path)
             player = try AVAudioPlayer(contentsOf: url)
             player?.delegate = self
             let time = player?.duration
-            let currentTime = player?.deviceCurrentTime
+            let currentTime = player?.currentTime
             if currentTime == 0 {
                 player!.play()
-            } else if currentTime! - time! < 0 {
-                player?.pause()
+                self.modelData[index].playStatus = .play
+            } else if time! > currentTime! && (currentTime!) != 0{
+                if self.modelData[index].playStatus == .play {
+                    player?.pause()
+                    self.modelData[index].playStatus = .pause
+                }else if self.modelData[index].playStatus == .pause {
+                    player?.play()
+                    self.modelData[index].playStatus = .play
+                }
             } else if currentTime == time {
-                player?.play()
+                player?.stop()
+                self.modelData[index].playStatus = .stop
             }
         }catch let error {
             print(error.localizedDescription)
-        }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index = indexPath.row
-        var playType = self.modelData[index].playStatus
-        switch playType {
-        case .play:
-            playType = .stop
-            
-        case .pause:
-            playType = .play
-            
-        case .stop:
-            playType = .play
-            
         }
     }
 }
 extension RecorderFileListTableView: AVAudioPlayerDelegate{
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         print("录音播放完成")
-//        self.playButton.isSelected = !self.playButton.isSelected
+        self.playButtonView.isSelected = !self.playButtonView.isSelected
+        self.modelData[self.indexSelected ?? 0].playStatus = .stop
     }
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         print(error?.localizedDescription)
